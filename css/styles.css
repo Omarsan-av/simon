@@ -1,0 +1,148 @@
+*
+{
+    font-family: 'Arial';
+    margin: 0;
+    padding: 0;
+} 
+
+body 
+{
+    background: #dedede;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    /* background: linear-gradient(to left, #F9D423, #FF4E50 120%); */
+    background: #5f2c82;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.background 
+{
+    background: linear-gradient(to bottom,rgb(0 0 0 / 75%),transparent);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.gameboard 
+{
+    height: 70vh;
+    width: 70vh;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.color 
+{
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+}
+
+.left 
+{
+    float: left;
+}
+
+.right 
+{
+    float: left;
+}
+
+.azul
+{
+    background: #007377;
+}
+
+.azul.light 
+{
+    background: #06858a;
+}
+
+.verde
+{
+    background: #709e03;
+}
+
+.verde.light 
+{
+    background: #82b30d;
+}
+
+.violeta 
+{
+    background: #9f0069;
+}
+
+.violeta.light 
+{
+    background: #c10983;
+}
+
+.naranja
+{
+    background: #db4b00;
+}
+
+.naranja.light 
+{
+    background: #f16c27;
+}
+
+.btn-start 
+{
+    width: 350px;
+    height: 80px;
+    background: #ecf0f1;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    position: absolute;
+    top: calc(50% - 40px);
+    left: calc(50% - 175px);
+}
+
+.hide 
+{
+    display: none;
+}       
+
+@media screen and (min-width: 320px) and (max-width: 800px) and (orientation: landscape)
+{
+    .gameboard 
+    {
+        height: 95vh;
+        width: 95vh;
+    }   
+    
+    .btn-start 
+    {
+        width: 85vh;
+        height: 60px;
+        font-size: 1.8rem;
+        top: 49%;
+        left: calc(50% - 42.5vh);
+    }
+} 
+
+@media screen and (min-width: 320px) and (max-width: 600px) and (orientation: portrait)
+{
+    .gameboard 
+    {
+        height: 90vw;
+        width: 90vw;
+    }   
+
+    .btn-start 
+    {
+        width: 80vw;
+        height: 60px;
+        font-size: 1.8rem;
+        top: 50%;
+        left: calc(50% - 40vw);
+    }
+}
