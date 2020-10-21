@@ -30,7 +30,7 @@
 			const btnEmpezar = document.getElementById('btnEmpezar')
 			const animation = document.getElementById('animation')
 			const ULTIMO_NIVEL = 20
-			var puntuacion = 20
+			var puntuacion = 0
 			var cont = 1
 
       	class Juego 
@@ -205,19 +205,19 @@
 				{
 					setTimeout(() => 
 					{
-						swal('¡Genial!', 'Nivel ' + cont + ' superado 😎', 'success')
+						swal('¡Genial! 😎', 'Nivel ' + cont + ' superado.', 'success')
 						.then(() => 
 						{
 							cont ++
 							setTimeout(this.siguienteNivel, 100)
 						})		
-					} , 600)
+					}, 600)
 		
 				}
 
 				ganoElJuego()
 				{
-					swal('¡Ganaste!', 'Felicitaciones, ganaste el juego 😎', 'success')
+					swal('¡Felicitaciones! 🎉🎉🎉', 'Ganaste el juego.👏😎', 'success')
 					.then(() => 
 					{
 						this.eliminarEventosClick()
@@ -228,7 +228,7 @@
 
 				perdioElJuego()
 				{
-					swal('¡Perdiste!', 'Lo lamentamos. ☹️', 'error')
+					swal('¡Perdiste! ☹️', 'Lo lamentamos.', 'error')
 					
 					.then(() => 
 					{
