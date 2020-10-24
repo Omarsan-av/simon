@@ -45,7 +45,7 @@
 			const animation = document.getElementById('animation')
 			var puntuacion = 0
 			var cont = 1
-			var ULTIMO_NIVEL = 20
+			var ULTIMO_NIVEL = 30
 
       	class Juego 
 			{
@@ -100,17 +100,17 @@
 				{
 					if(n === 'facil')
 					{
-						ULTIMO_NIVEL = 2
+						ULTIMO_NIVEL = 8
 					}
 					
 					else if(n === 'medio')
 					{
-						ULTIMO_NIVEL = 3
+						ULTIMO_NIVEL = 14
 					}
 
 					else
 					{
-						ULTIMO_NIVEL = 4
+						ULTIMO_NIVEL = 20
 					}
 
 					this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random()*4))				
