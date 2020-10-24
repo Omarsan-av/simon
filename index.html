@@ -12,8 +12,8 @@
 		
 		<div class="background">
 			<div class="gameboard animate__animated" id="animation">
-				<div id="azul" class="color azul left" data-color="azul"></div>
 				<div id="verde" class="color verde right" data-color="verde"></div>
+				<div id="azul" class="color azul left" data-color="azul"></div>
 				<div id="violeta" class="color violeta left" data-color="violeta"></div>
 				<div id="naranja" class="color naranja right" data-color="naranja"></div>
 				<button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">¡Empezar a jugar!</button>
@@ -23,15 +23,29 @@
 		<script src = "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 		<script>
+			/**
+			 * @param String name
+			 * @return String
+			 * funcion para obtener valores por get
+			*/
+			function getParameterByName(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			}
+
+			var n = getParameterByName('n')
+
 			const azul = document.getElementById('azul')
 			const verde = document.getElementById('verde')
 			const violeta = document.getElementById('violeta')
 			const naranja = document.getElementById('naranja')
 			const btnEmpezar = document.getElementById('btnEmpezar')
 			const animation = document.getElementById('animation')
-			const ULTIMO_NIVEL = 20
 			var puntuacion = 0
 			var cont = 1
+			var ULTIMO_NIVEL = 20
 
       	class Juego 
 			{
@@ -84,6 +98,21 @@
 
 				generarSecuencia()
 				{
+					if(n === 'facil')
+					{
+						ULTIMO_NIVEL = 2
+					}
+					
+					else if(n === 'medio')
+					{
+						ULTIMO_NIVEL = 3
+					}
+
+					else
+					{
+						ULTIMO_NIVEL = 4
+					}
+
 					this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random()*4))				
 				}
 
@@ -217,13 +246,16 @@
 
 				ganoElJuego()
 				{
-					swal('¡Felicitaciones! 🎉🎉🎉', 'Ganaste el juego.👏😎', 'success')
-					.then(() => 
+					setTimeout(() => 
 					{
-						this.eliminarEventosClick()
-						this.inicializar() 
-						cont = 1
-					})			
+						swal('¡Felicitaciones! 🎉🎉🎉', 'Ganaste el juego.👏😎', 'success')
+						.then(() => 
+						{
+							this.eliminarEventosClick()
+							this.inicializar() 
+							cont = 1
+						})			
+					}, 600)
 				}
 
 				perdioElJuego()
