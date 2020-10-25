@@ -170,6 +170,11 @@ body
 
 @media screen and (min-width: 320px) and (max-width: 600px) and (orientation: portrait)
 {
+    body 
+    {
+        overflow: hidden;
+    }
+
     .gameboard 
     {
         height: 90vw;
