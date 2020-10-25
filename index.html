@@ -20,7 +20,7 @@
 			</div>		
 		</div>	
 		
-		<script src = "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 		<script>
 			/**
@@ -44,7 +44,7 @@
 			const btnEmpezar = document.getElementById('btnEmpezar')
 			const animation = document.getElementById('animation')
 			var puntuacion = 0
-			var cont = 1
+			var cont = 0
 			var ULTIMO_NIVEL = 30
 
       	class Juego 
@@ -97,10 +97,12 @@
 				}
 
 				generarSecuencia()
-				{
+				{			
+					this.nextLevel()
+
 					if(n === 'facil')
 					{
-						ULTIMO_NIVEL = 8
+						ULTIMO_NIVEL = 3
 					}
 					
 					else if(n === 'medio')
@@ -207,6 +209,7 @@
 						puntuacion = puntuacion + 50 
 
 						// document.documentElement.innerHTML =  puntuacion ;
+						console.log(puntuacion)
 						
 						if(this.subnivel === this.nivel)
 						{
@@ -234,39 +237,83 @@
 				{
 					setTimeout(() => 
 					{
-						swal('¡Genial! 😎', 'Nivel ' + cont + ' superado.', 'success')
-						.then(() => 
-						{
-							cont ++
-							setTimeout(this.siguienteNivel, 100)
-						})		
-					}, 600)
-		
+						this.nextLevel()
+							
+						setTimeout(this.siguienteNivel, 800)
+					}, 800)	
+				}
+
+				nextLevel()
+				{
+					cont ++
+						
+					const Toast = Swal.mixin
+					({
+						toast: true,
+						position: 'center',
+						timer: 1000,
+						showConfirmButton: false, 
+						background: 'white',
+						width: '200px',
+						padding: '15px 0px'
+					})
+
+					Toast.fire
+					({
+						title: `Nivel ${cont}`  
+					}) 
 				}
 
 				ganoElJuego()
 				{
 					setTimeout(() => 
 					{
-						swal('¡Felicitaciones! 🎉🎉🎉', 'Ganaste el juego.👏😎', 'success')
+						Swal.fire
+						({
+							title: '🎉¡Felicidades!🎉',
+							text: 'Ganaste el juego. 😎',
+							width: 400,
+							showClass: 
+							{
+								popup: 'animate__animated animate__fadeInDown'
+							},
+							hideClass: 
+							{
+								popup: 'animate__animated animate__fadeOutUp'
+							}
+						})
+
 						.then(() => 
 						{
 							this.eliminarEventosClick()
 							this.inicializar() 
-							cont = 1
+							cont = 0
 						})			
 					}, 600)
 				}
 
 				perdioElJuego()
 				{
-					swal('¡Perdiste! ☹️', 'Lo lamentamos.', 'error')
+					Swal.fire
+					({
+						title: '¡Perdiste! ☹️',
+						text: 'Lo lamentamos mucho.',
+						width: 400,
+						showClass: 
+						{
+							popup: 'animate__animated animate__fadeInDown'
+						},
+						hideClass: 
+						{
+							popup: 'animate__animated animate__fadeOutUp'
+						}
+					})
 					
 					.then(() => 
 					{
 						this.eliminarEventosClick()
 						this.inicializar() 
-						cont = 1
+						cont = 0
 					})
 				}
 			}
