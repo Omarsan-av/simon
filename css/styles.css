@@ -150,6 +150,14 @@ body
     align-items: center;
 }
 
+.fas.fa-home.fa-2x 
+{
+    color: #ffffffa8;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
 @media screen and (min-width: 500px) and (max-width: 800px) and (orientation: landscape)
 {
     .gameboard 
