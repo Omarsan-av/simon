@@ -160,8 +160,8 @@ body
 
 a:hover.nivel 
 {
-    color: #82b30d;
-    background-color: #ffffff2e;
+    color: #5f2c82;
+    background-color: #cecec5;
 }
 
 @media screen and (min-width: 500px) and (max-width: 800px) and (orientation: landscape)
