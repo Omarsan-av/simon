@@ -301,6 +301,11 @@
 
 				perdioElJuego()
 				{
+					let sonido = document.createElement("audio");
+					sonido.setAttribute("src", "audio/you_lose.mp3", "autoplay");
+					sonido.setAttribute("autoplay", "autoplay");
+					document.body.appendChild(sonido);
+					
 					Swal.fire
 					({
 						title: '¡Perdiste! ☹️',
