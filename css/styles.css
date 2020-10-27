@@ -152,10 +152,15 @@ body
 
 .fas.fa-home.fa-2x 
 {
-    color: #ffffffa8;
+    color: #ffffffbf;
     position: absolute;
     top: 20px;
     left: 20px;
+}
+
+.fas.fa-home.fa-2x:hover
+{
+    color:#92bce4;
 }
 
 a:hover.nivel 
