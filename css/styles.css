@@ -158,6 +158,12 @@ body
     left: 20px;
 }
 
+a:hover.nivel 
+{
+    color: #82b30d;
+    background-color: #ffffff2e;
+}
+
 @media screen and (min-width: 500px) and (max-width: 800px) and (orientation: landscape)
 {
     .gameboard 
