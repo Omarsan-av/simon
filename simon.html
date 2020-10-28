@@ -261,8 +261,7 @@
 						showConfirmButton: false, 
 						background: 'white',
 						width: '200px',
-						padding: '15px 0px',
-						margin: '500px 0 0 0'
+						padding: '15px 0px'
 					})
 
 					Toast.fire
@@ -301,10 +300,10 @@
 
 				perdioElJuego()
 				{
-					let sonido = document.createElement("audio");
-					sonido.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3");
-					sonido.setAttribute("autoplay", "autoplay");
-					document.body.appendChild(sonido);
+					let sonido = document.createElement("audio")
+					sonido.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
+					sonido.setAttribute("autoplay", "autoplay")
+					document.body.appendChild(sonido)
 					
 					Swal.fire
 					({
