@@ -11,6 +11,7 @@
 	</head>
 
   	<body>		
+		<audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio>
 		
 		<div class="background">
 			<a href="index.html"><i class="fas fa-home fa-2x "></i></a>
@@ -77,7 +78,16 @@
         		}
 
 				toggleBtnEmpezar()
-				{
+				{	
+					function soundStart()
+					{
+						let sound_start = document.createElement("audio")
+						sound_start.setAttribute("src", "https://omarsav.com/audio/start.mp3")
+						sound_start.setAttribute("autoplay", "autoplay")
+						document.body.appendChild(sound_start);
+						sound_start.volume = 0.3
+					}
+
 					if(animation.classList.contains('animate__rotateIn'))
 					{
 						animation.classList.remove('animate__rotateIn')
@@ -95,6 +105,7 @@
 
 					else 
 					{
+						// soundStart()
 						btnEmpezar.classList.add('hide')
 					}
 				}
@@ -178,6 +189,31 @@
 				iluminarColor(color)
 				{
 					this.colores[color].classList.add('light')
+
+					function soundColor()
+					{
+						let sound_color = document.createElement("audio")
+
+						if(color === 'naranja')
+						{
+							// sound_color.setAttribute("src", "https://omarsav.com/audio/orange.mp3")
+						}
+
+						if(color === 'verde')
+						{
+							// sound_color.setAttribute("src", "https://omarsav.com/audio/green.mp3")
+						}
+
+						if(color === 'azul')
+						{
+							// sound_color.setAttribute("src", "https://omarsav.com/audio/blue.mp3")
+						}
+						sound_color.setAttribute("autoplay", "autoplay")
+						document.body.appendChild(sound_color);
+					}
+
+					soundColor()
+
 					setTimeout(() => this.apagarColor(color), 350)
 				}
 
@@ -333,6 +369,10 @@
 			{
 				window.juego = new Juego()
 			}
-    	</script>
+		 </script>
+		 <script>
+			const song = document.getElementById('the_weeknd');
+			song.volume = 0.1
+ 		</script>
   	</body>
 </html>
