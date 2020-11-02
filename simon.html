@@ -11,9 +11,10 @@
 	</head>
 
   	<body>		
-		<audio id = "the_weeknd" src="https://omarsav.com/audio/.mp3" autoplay="autoplay" preload="auto" loop></audio>
+		<audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio>
 		
 		<div class="background">
+			<div></div>
 			<a href="index.html"><i class="fas fa-home fa-2x "></i></a>
 			<div class="gameboard animate__animated" id="animation">
 				<div id="verde" class="color verde right" data-color="verde"></div>
@@ -250,7 +251,7 @@
 
 						puntuacion = puntuacion + 50 
 
-						// document.documentElement.innerHTML =  puntuacion ;
+						document.documentElement.innerHTML =  puntuacion ;
 						console.log(puntuacion)
 						
 						if(this.subnivel === this.nivel)
