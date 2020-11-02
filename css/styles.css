@@ -24,8 +24,26 @@ body
     background: linear-gradient(to bottom,rgb(0 0 0 / 75%),transparent);
     width: 100vw;
     height: 100vh;
+    /* display: flex; */
+    /* align-items: center; */
+}
+
+.home-score 
+{
+    width: 100vw;
+    height: 10vh;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    padding-right: 25px;
+    box-sizing: border-box;
+}
+
+.score 
+{
+    height: 7vh;
+    width: 10%;
+    border-radius: 15px;
+    margin-top: 1.5vw;
 }
 
 .gameboard 
@@ -34,7 +52,7 @@ body
     width: 70vh;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 6vh auto;
 }
 
 .color 

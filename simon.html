@@ -14,8 +14,10 @@
 		<audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio>
 		
 		<div class="background">
-			<div></div>
-			<a href="index.html"><i class="fas fa-home fa-2x "></i></a>
+			<div class="home-score">
+				<a href="index.html"><i class="fas fa-home fa-2x "></i></a>
+				<input type="text" name="" class="score">
+			</div>
 			<div class="gameboard animate__animated" id="animation">
 				<div id="verde" class="color verde right" data-color="verde"></div>
 				<div id="azul" class="color azul left" data-color="azul"></div>
@@ -251,7 +253,7 @@
 
 						puntuacion = puntuacion + 50 
 
-						document.documentElement.innerHTML =  puntuacion ;
+						// document.documentElement.innerHTML =  puntuacion ;
 						console.log(puntuacion)
 						
 						if(this.subnivel === this.nivel)
