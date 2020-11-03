@@ -11,48 +11,53 @@
 	</head>
 
   	<body>		
-		<audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio>
+		<!-- <audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio> -->
 		
-		<div class="background">
-			<div class="home-score">
-				<a href="index.html"><i class="fas fa-home fa-2x "></i></a>
-				<input type="text" name="" class="score">
+		<div class = "background">
+			<a href = "index.html?"><i class="fas fa-home fa-2x"></i></a>
+			<div class = "home-score">
+				<span class="maximum-score">Record: <span id="record"></span></span>
+				<span class = "text-score">Score:</span>
+				<div class = "score" id="score"></div>
 			</div>
-			<div class="gameboard animate__animated" id="animation">
-				<div id="verde" class="color verde right" data-color="verde"></div>
-				<div id="azul" class="color azul left" data-color="azul"></div>
-				<div id="violeta" class="color violeta left" data-color="violeta"></div>
-				<div id="naranja" class="color naranja right" data-color="naranja"></div>
-				<button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">¡Empezar a jugar!</button>
+			<div class="gameboard animate__animated" id = "animation">
+				<div id = "verde" class = "color verde right" data-color = "verde"></div>
+				<div id = "azul" class = "color azul left" data-color = "azul"></div>
+				<div id = "violeta" class = "color violeta left" data-color = "violeta"></div>
+				<div id = "naranja" class = "color naranja right" data-color = "naranja"></div>
+				<button id = "btnEmpezar" class = "btn-start" onclick = "empezarJuego()">¡Empezar a jugar!</button>
 			</div>		
 		</div>	
 		
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+		<script src = "https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+		
 		<script>
 			/**
 			 * @param String name
 			 * @return String
 			 * funcion para obtener valores por get
-			*/
-			function getParameterByName(name) {
-				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-				results = regex.exec(location.search);
-				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+			 */
+			function getParameterByName(name) 
+			{
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+				let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				results = regex.exec(location.search)
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "))
 			}
-
-			var n = getParameterByName('n')
-
+			
+			let n = getParameterByName('n')
+			
 			const azul = document.getElementById('azul')
 			const verde = document.getElementById('verde')
 			const violeta = document.getElementById('violeta')
 			const naranja = document.getElementById('naranja')
 			const btnEmpezar = document.getElementById('btnEmpezar')
 			const animation = document.getElementById('animation')
-			var puntuacion = 0
+			let puntuacion = 0
 			var cont = 0
 			var ULTIMO_NIVEL = 30
+			let record = document.getElementById('record')
+			let max
 
       	class Juego 
 			{
@@ -82,12 +87,14 @@
 
 				toggleBtnEmpezar()
 				{	
+					score.innerHTML =  0 + ' pts'
+
 					function soundStart()
 					{
 						let sound_start = document.createElement("audio")
 						sound_start.setAttribute("src", "https://omarsav.com/audio/start.mp3")
 						sound_start.setAttribute("autoplay", "autoplay")
-						document.body.appendChild(sound_start);
+						document.body.appendChild(sound_start)
 						sound_start.volume = 0.3
 					}
 
@@ -212,7 +219,7 @@
 							// sound_color.setAttribute("src", "https://omarsav.com/audio/blue.mp3")
 						}
 						sound_color.setAttribute("autoplay", "autoplay")
-						document.body.appendChild(sound_color);
+						document.body.appendChild(sound_color)
 					}
 
 					soundColor()
@@ -253,7 +260,8 @@
 
 						puntuacion = puntuacion + 50 
 
-						// document.documentElement.innerHTML =  puntuacion ;
+						let score = document.getElementById('score')
+						score.innerHTML =  puntuacion + ' pts'
 						console.log(puntuacion)
 						
 						if(this.subnivel === this.nivel)
@@ -313,6 +321,11 @@
 				{
 					setTimeout(() => 
 					{
+						if(puntuacion > record.innerHTML )
+						{
+							record.innerHTML = puntuacion + ' pts'
+						}
+
 						Swal.fire
 						({
 							title: '🎉¡Felicidades!🎉',
@@ -330,9 +343,11 @@
 
 						.then(() => 
 						{
+
 							this.eliminarEventosClick()
 							this.inicializar() 
 							cont = 0
+							puntuacion = 0
 						})			
 					}, 600)
 				}
@@ -347,7 +362,7 @@
 					Swal.fire
 					({
 						title: '¡Perdiste! ☹️',
-						text: '¡No te rindas! Vuelve a intentarlo.',
+						text: `¡No te rindas! Vuelve a intentarlo.`, 
 						width: 400,
 						showClass: 
 						{
@@ -363,7 +378,15 @@
 					{
 						this.eliminarEventosClick()
 						this.inicializar() 
-						cont = 0
+						cont = 0; 
+
+						if(puntuacion > record.innerHTML )
+						{
+							record.innerHTML = puntuacion + ' pts'
+						}
+
+						record.innerHTML = puntuacion
+						puntuacion = 0
 					})
 				}
 			}
@@ -374,8 +397,8 @@
 			}
 		 </script>
 		 <script>
-			const song = document.getElementById('the_weeknd')
-			song.volume = 0.1
+			// const song = document.getElementById('the_weeknd')
+			// song.volume = 0.1
  		</script>
   	</body>
 </html>

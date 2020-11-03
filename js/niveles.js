@@ -3,14 +3,14 @@
    const FACIL = document.getElementById('facil')
    const MEDIO = document.getElementById('medio')
    const SUPREMO = document.getElementById('supremo')
-   let n; 
+   let n
 
    function soundLevel()
    {
       let sound_level = document.createElement("audio")
       sound_level.setAttribute("src", "https://omarsav.com/audio/niveles.mp3")
       sound_level.setAttribute("autoplay", "autoplay")
-      document.body.appendChild(sound_level);
+      document.body.appendChild(sound_level)
       console.log(sound_level)
    }
 
