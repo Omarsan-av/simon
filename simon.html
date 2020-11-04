@@ -94,6 +94,7 @@
 						let sound_start = document.createElement("audio")
 						sound_start.setAttribute("src", "https://omarsav.com/audio/start_game.mp3")
 						sound_start.setAttribute("autoplay", "autoplay")
+						sound_start.setAttribute("preload", "auto")
 						document.body.appendChild(sound_start)
 						sound_start.volume = 0.3
 					}
@@ -225,6 +226,7 @@
 						}
 
 						sound_color.setAttribute("autoplay", "autoplay")
+						sound_color.setAttribute("preload", "auto")
 						document.body.appendChild(sound_color)
 						sound_color.volume = 0.4
 					}
@@ -334,8 +336,9 @@
 					let sound_winner = document.createElement("audio")
 					sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
 					sound_winner.setAttribute("autoplay", "autoplay")
+					sound_winner.setAttribute("preload", "auto")
 					document.body.appendChild(sound_winner)
-					sound_winner.volume = 0.5
+					sound_winner.volume = 0.7
 
 					setTimeout(() => 
 					{
@@ -376,7 +379,7 @@
 					audio_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
 					audio_loser.setAttribute("autoplay", "autoplay")
 					document.body.appendChild(audio_loser)
-					audio_loser.volume = 0.4
+					audio_loser.volume = 0.3
 					
 					Swal.fire
 					({
