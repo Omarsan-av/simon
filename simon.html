@@ -11,8 +11,6 @@
 	</head>
 
   	<body>
-		<!-- <audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio> -->
-
 		<div class = "background">
 			<a href = "index.html?"><i class="fas fa-home fa-2x"></i></a>
 			<div class = "home-score">
@@ -309,11 +307,6 @@
 				{
 					cont ++
 
-					let nextLevelAudio = document.createElement("audio")
-					nextLevelAudio.setAttribute("src", "https://omarsav.com/audio/.mp3")
-					nextLevelAudio.setAttribute("autoplay", "autoplay")
-					document.body.appendChild(nextLevelAudio)
-
 					const Toast = Swal.mixin
 					({
 						toast: true,
@@ -327,7 +320,7 @@
 
 					Toast.fire
 					({
-						title: `Nivel ${cont}`
+						title: `Nivel ${cont} 💡`
 					})
 				}
 
@@ -350,7 +343,7 @@
 						Swal.fire
 						({
 							title: '🎉¡Felicidades!🎉',
-							text: 'Ganaste el juego. 😎',
+							text: 'Ganaste el juego Campeón. 😎',
 							width: 400,
 							showClass:
 							{
@@ -424,9 +417,5 @@
 				window.juego = new Juego()
 			}
 		 </script>
-		 <script>
-			// const song = document.getElementById('the_weeknd')
-			// song.volume = 0.1
- 		</script>
   	</body>
 </html>
