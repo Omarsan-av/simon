@@ -14,7 +14,6 @@ body
 	width: 100vw;
 	overflow-y: hidden;
 	box-sizing: border-box;
-	/* background: linear-gradient(to left, #F9D423, #FF4E50 120%); */
 	background: #5f2c82;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -25,8 +24,6 @@ body
 	background: linear-gradient(to bottom,rgb(0 0 0 / 75%),transparent);
 	width: 100vw;
 	height: 100vh;
-	/* display: flex; */
-	/* align-items: center; */
 }
 
 .home-score 
@@ -222,6 +219,11 @@ a:hover.nivel
 
 @media screen and (min-width: 500px) and (max-width: 800px) and (orientation: landscape)
 {
+	body
+	{
+		overflow: visible;
+	} 
+	
 	.gameboard 
 	{
 		height: 95vh;
@@ -242,7 +244,7 @@ a:hover.nivel
 {
 	body
 	{
-		overflow: auto;
+		overflow: visible;
 	} 
 
 	.gameboard 
