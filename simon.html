@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="css/styles.css">
 	</head>
 
-  	<body>		
+  	<body>
 		<!-- <audio id = "the_weeknd" src="https://omarsav.com/audio/the-weeknd.mp3" autoplay="autoplay" preload="auto" loop></audio> -->
-		
+
 		<div class = "background">
 			<a href = "index.html?"><i class="fas fa-home fa-2x"></i></a>
 			<div class = "home-score">
@@ -26,27 +26,27 @@
 				<div id = "violeta" class = "color violeta left" data-color = "violeta"></div>
 				<div id = "naranja" class = "color naranja right" data-color = "naranja"></div>
 				<button id = "btnEmpezar" class = "btn-start" onclick = "empezarJuego()">¡Empezar a jugar!</button>
-			</div>		
-		</div>	
-		
+			</div>
+		</div>
+
 		<script src = "https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-		
+
 		<script>
 			/**
 			 * @param String name
 			 * @return String
 			 * funcion para obtener valores por get
 			 */
-			function getParameterByName(name) 
+			function getParameterByName(name)
 			{
 				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
 				let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 				results = regex.exec(location.search)
 				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "))
 			}
-			
+
 			let n = getParameterByName('n')
-			
+
 			const azul = document.getElementById('azul')
 			const verde = document.getElementById('verde')
 			const violeta = document.getElementById('violeta')
@@ -59,10 +59,10 @@
 			let record = document.getElementById('record')
 			record.innerHTML = 0
 
-      	class Juego 
+      	class Juego
 			{
-				constructor() 
-				{	
+				constructor()
+				{
 					this.inicializar = this.inicializar.bind(this)
 					this.inicializar()
 					this.generarSecuencia()
@@ -70,23 +70,23 @@
 					setTimeout(this.siguienteNivel, 2000)
 				}
 
-        		inicializar() 
+        		inicializar()
 				{
 					this.nivel = 1
 					this.siguienteNivel = this.siguienteNivel.bind(this)
 					this.elegirColor = this.elegirColor.bind(this)
           	   this.toggleBtnEmpezar()
-					this.colores = 					
+					this.colores =
 					{
-						azul, 
-						verde, 
+						azul,
+						verde,
 						violeta,
 						naranja
 					}
         		}
 
 				toggleBtnEmpezar()
-				{	
+				{
 					score.innerHTML =  0 + ' pts'
 
 					function soundStart()
@@ -104,7 +104,7 @@
 						animation.classList.remove('animate__rotateIn')
 					}
 
-					else 
+					else
 					{
 						animation.classList.add('animate__rotateIn')
 					}
@@ -114,7 +114,7 @@
 						btnEmpezar.classList.remove('hide')
 					}
 
-					else 
+					else
 					{
 						soundStart()
 						btnEmpezar.classList.add('hide')
@@ -122,7 +122,7 @@
 				}
 
 				generarSecuencia()
-				{			
+				{
 					setTimeout(() =>
 					{
 						this.nextLevel()
@@ -132,7 +132,7 @@
 					{
 						ULTIMO_NIVEL = 7
 					}
-					
+
 					else if(n === 'medio')
 					{
 						ULTIMO_NIVEL = 14
@@ -143,10 +143,10 @@
 						ULTIMO_NIVEL = 21
 					}
 
-					this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random()*4))				
+					this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random()*4))
 				}
 
-				siguienteNivel() 
+				siguienteNivel()
 				{
 					this.subnivel = 0
 					this.iluminarSecuencia()
@@ -163,7 +163,7 @@
 							return 'verde'
 						case 2:
 							return 'violeta'
-						case 3: 
+						case 3:
 							return 'naranja'
 					}
 				}
@@ -178,20 +178,20 @@
 							return 1
 						case 'violeta':
 							return 2
-						case 'naranja': 
+						case 'naranja':
 							return 3
 					}
 				}
 
 				iluminarSecuencia()
 				{
-					setTimeout(() => 
-					{	
+					setTimeout(() =>
+					{
 						for(let i = 0; i < this.nivel; i++)
 						{
 							const color = this.transformarNumeroAColor(this.secuencia[i])
 
-							setTimeout(() => this.iluminarColor(color), 800 * i)	
+							setTimeout(() => this.iluminarColor(color), 800 * i)
 							console.log(color)
 						}
 					}, 800)
@@ -267,12 +267,12 @@
 					{
 						this.subnivel++
 
-						puntuacion = puntuacion + 50 
-						
+						puntuacion = puntuacion + 50
+
 						let score = document.getElementById('score')
 						score.innerHTML =  puntuacion + ' pts'
 						console.log(puntuacion)
-						
+
 						if(this.subnivel === this.nivel)
 						{
 							this.nivel++
@@ -282,27 +282,27 @@
 								this.ganoElJuego()
 							}
 
-							else 
+							else
 							{
 								this.great()
 							}
 						}
 					}
 
-					else 
+					else
 					{
 						this.perdioElJuego()
 					}
 				}
-				
+
 				great()
 				{
-					setTimeout(() => 
+					setTimeout(() =>
 					{
 						this.nextLevel()
-							
+
 						setTimeout(this.siguienteNivel, 800)
-					}, 800)	
+					}, 800)
 				}
 
 				nextLevel()
@@ -313,13 +313,13 @@
 					nextLevelAudio.setAttribute("src", "https://omarsav.com/audio/.mp3")
 					nextLevelAudio.setAttribute("autoplay", "autoplay")
 					document.body.appendChild(nextLevelAudio)
-						
+
 					const Toast = Swal.mixin
 					({
 						toast: true,
-						position: 'center',						 
+						position: 'center',
 						timer: 1000,
-						showConfirmButton: false, 
+						showConfirmButton: false,
 						background: 'white',
 						width: '200px',
 						padding: '15px 0px'
@@ -327,8 +327,8 @@
 
 					Toast.fire
 					({
-						title: `Nivel ${cont}`  
-					}) 
+						title: `Nivel ${cont}`
+					})
 				}
 
 				ganoElJuego()
@@ -340,7 +340,7 @@
 					document.body.appendChild(sound_winner)
 					sound_winner.volume = 0.7
 
-					setTimeout(() => 
+					setTimeout(() =>
 					{
 						if(puntuacion > parseInt(record.innerHTML))
 						{
@@ -352,72 +352,74 @@
 							title: '🎉¡Felicidades!🎉',
 							text: 'Ganaste el juego. 😎',
 							width: 400,
-							showClass: 
+							showClass:
 							{
 								popup: 'animate__animated animate__fadeInDown'
 							},
-							hideClass: 
+							hideClass:
 							{
 								popup: 'animate__animated animate__fadeOutUp'
 							}
 						})
 
-						.then(() => 
+						.then(() =>
 						{
 
 							this.eliminarEventosClick()
-							this.inicializar() 
+							this.inicializar()
 							cont = 0
 							puntuacion = 0
-						})			
+						})
 					}, 600)
 				}
 
 				perdioElJuego()
 				{
-					let audio_loser= document.createElement("audio")
-					audio_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
-					audio_loser.setAttribute("autoplay", "autoplay")
-					document.body.appendChild(audio_loser)
-					audio_loser.volume = 0.3
-					
-					Swal.fire
-					({
-						title: '¡Perdiste! ☹️',
-						text: `¡No te rindas! Vuelve a intentarlo.`, 
-						width: 400,
-						showClass: 
-						{
-							popup: 'animate__animated animate__fadeInDown'
-						},
-						hideClass: 
-						{
-							popup: 'animate__animated animate__fadeOutUp'
-						}
-					})
-					
-					.then(() => 
+					setTimeout(()=>
 					{
-						this.eliminarEventosClick()
-						this.inicializar() 
-						cont = 0; 
+						let audio_loser= document.createElement("audio")
+						audio_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
+						audio_loser.setAttribute("autoplay", "autoplay")
+						document.body.appendChild(audio_loser)
+						audio_loser.volume = 0.3
 
-						if(puntuacion > parseInt(record.innerHTML))
+						Swal.fire
+						({
+							title: '¡Perdiste! ☹️',
+							text: `¡No te rindas! Vuelve a intentarlo.`,
+							width: 400,
+							showClass:
+							{
+								popup: 'animate__animated animate__fadeInDown'
+							},
+							hideClass:
+							{
+								popup: 'animate__animated animate__fadeOutUp'
+							}
+						})
+					
+						.then(() =>
 						{
-							record.innerHTML = puntuacion + ' pts'						
-						}
+							this.eliminarEventosClick()
+							this.inicializar()
+							cont = 0;
 
-						else 
-						{
-							record.innerHTML = record.innerHTML
-						}			
-						
-						puntuacion = 0
-					})
+							if(puntuacion > parseInt(record.innerHTML))
+							{
+								record.innerHTML = puntuacion + ' pts'
+							}
+
+							else
+							{
+								record.innerHTML = record.innerHTML
+							}
+
+							puntuacion = 0
+						})
+					}, 600)
 				}
 			}
-
-			function empezarJuego() 
+			function empezarJuego()
 			{
 				window.juego = new Juego()
 			}
