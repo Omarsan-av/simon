@@ -57,7 +57,7 @@
 			var cont = 0
 			var ULTIMO_NIVEL = 30
 			let record = document.getElementById('record')
-			let max
+			record.innerHTML = 0
 
       	class Juego 
 			{
@@ -92,7 +92,7 @@
 					function soundStart()
 					{
 						let sound_start = document.createElement("audio")
-						sound_start.setAttribute("src", "https://omarsav.com/audio/start.mp3")
+						sound_start.setAttribute("src", "https://omarsav.com/audio/next.mp3")
 						sound_start.setAttribute("autoplay", "autoplay")
 						document.body.appendChild(sound_start)
 						sound_start.volume = 0.3
@@ -206,12 +206,12 @@
 
 						if(color === 'naranja')
 						{
-							// sound_color.setAttribute("src", "https://omarsav.com/audio/orange.mp3")
+							sound_color.setAttribute("src", "https://omarsav.com/audio/orange.mp3")
 						}
 
 						if(color === 'verde')
 						{
-							// sound_color.setAttribute("src", "https://omarsav.com/audio/green.mp3")
+							sound_color.setAttribute("src", "https://omarsav.com/audio/green.mp3")
 						}
 
 						if(color === 'azul')
@@ -220,6 +220,7 @@
 						}
 						sound_color.setAttribute("autoplay", "autoplay")
 						document.body.appendChild(sound_color)
+						sound_color.volume = 0.4
 					}
 
 					soundColor()
@@ -259,7 +260,7 @@
 						this.subnivel++
 
 						puntuacion = puntuacion + 50 
-
+						
 						let score = document.getElementById('score')
 						score.innerHTML =  puntuacion + ' pts'
 						console.log(puntuacion)
@@ -299,6 +300,11 @@
 				nextLevel()
 				{
 					cont ++
+
+					let nextLevelAudio = document.createElement("audio")
+					nextLevelAudio.setAttribute("src", "https://omarsav.com/audio/.mp3")
+					nextLevelAudio.setAttribute("autoplay", "autoplay")
+					document.body.appendChild(nextLevelAudio)
 						
 					const Toast = Swal.mixin
 					({
@@ -321,7 +327,7 @@
 				{
 					setTimeout(() => 
 					{
-						if(puntuacion > record.innerHTML )
+						if(puntuacion > record.innerHTML)
 						{
 							record.innerHTML = puntuacion + ' pts'
 						}
@@ -380,13 +386,19 @@
 						this.inicializar() 
 						cont = 0; 
 
-						if(puntuacion > record.innerHTML )
+						if(puntuacion > parseInt(record.innerHTML))
 						{
-							record.innerHTML = puntuacion + ' pts'
+							record.innerHTML = puntuacion + ' pts'						
 						}
 
-						record.innerHTML = puntuacion + ' pts'
-						puntuacion = 0
+						else 
+						{
+							record.innerHTML = record.innerHTML
+						}
+						
+							// record.innerHTML = puntuacion + ' pts'
+							puntuacion = 0
+						
 					})
 				}
 			}
