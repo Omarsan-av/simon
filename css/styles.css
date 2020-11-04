@@ -240,6 +240,11 @@ a:hover.nivel
 
 @media screen and (min-width: 320px) and (max-width: 600px) and (orientation: portrait)
 {
+	body
+	{
+		overflow: auto;
+	} 
+
 	.gameboard 
 	{
 		height: 90vw;
