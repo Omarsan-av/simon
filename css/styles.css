@@ -39,40 +39,43 @@ body
 	padding-right: 25px;
 	box-sizing: border-box;
 	margin-top: 12px;
+	font-size: 22px;
+	color: white;
 }
 
 .score 
 {
 	height: 6vh;
-	width: 12%;
+	width: 12vw;
 	border-radius: 15px;
-	background-color: white;
 	display: flex	;
 	justify-content: space-around;
 	align-items: center;
 	box-sizing: border-box;
 	padding: 0 15px;
-	font-size: 25px;
+	background-color: white;
+	color: black;
 }
 
 .maximum-score
 {
-	font-size: 25px;
-	color: white;
 	margin-right: 28vw;
 }
 
 .text-score 
 {
 	margin-right: 15px;
-	color: white;
-	font-size: 20px;
+}
+
+.score-actual 
+{
+	display: flex;
+	align-items: center;
 }
 
 #record
 {
-	color: white;
-	font-size: 25px;
+	/* color: white; */
 }
 
 .gameboard 
@@ -269,4 +272,25 @@ a:hover.nivel
 	{
 		font-size: 22px;
 	}
+
+	.maximum-score 
+	{
+		margin-right: 0;
+	}
+
+	.home-score 
+	{
+		margin-top: 12vh;
+		font-size: 18px;
+		justify-content: space-around;
+	}
+
+	.score 
+	{
+		height: 5vh;
+		width: auto;
+		background-color: transparent;
+		color: white;
+		padding: 0;
+	} 
 }
