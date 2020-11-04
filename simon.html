@@ -327,7 +327,7 @@
 				{
 					setTimeout(() => 
 					{
-						if(puntuacion > record.innerHTML)
+						if(puntuacion > parseInt(record.innerHTML))
 						{
 							record.innerHTML = puntuacion + ' pts'
 						}
@@ -360,10 +360,11 @@
 
 				perdioElJuego()
 				{
-					let sonido = document.createElement("audio")
-					sonido.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
-					sonido.setAttribute("autoplay", "autoplay")
-					document.body.appendChild(sonido)
+					let audio_loser= document.createElement("audio")
+					audio_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
+					audio_loser.setAttribute("autoplay", "autoplay")
+					document.body.appendChild(audio_loser)
+					audio_loser.volume = 0.4
 					
 					Swal.fire
 					({
@@ -394,11 +395,9 @@
 						else 
 						{
 							record.innerHTML = record.innerHTML
-						}
+						}			
 						
-							// record.innerHTML = puntuacion + ' pts'
-							puntuacion = 0
-						
+						puntuacion = 0
 					})
 				}
 			}
