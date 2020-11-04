@@ -192,7 +192,7 @@
 							const color = this.transformarNumeroAColor(this.secuencia[i])
 
 							setTimeout(() => this.iluminarColor(color), 800 * i)
-							console.log(color)
+							// console.log(color)
 						}
 					}, 800)
 				}
@@ -271,7 +271,7 @@
 
 						let score = document.getElementById('score')
 						score.innerHTML =  puntuacion + ' pts'
-						console.log(puntuacion)
+						// console.log(puntuacion)
 
 						if(this.subnivel === this.nivel)
 						{
@@ -333,15 +333,15 @@
 
 				ganoElJuego()
 				{
-					let sound_winner = document.createElement("audio")
-					sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
-					sound_winner.setAttribute("autoplay", "autoplay")
-					sound_winner.setAttribute("preload", "auto")
-					document.body.appendChild(sound_winner)
-					sound_winner.volume = 0.7
-
 					setTimeout(() =>
 					{
+						let sound_winner = document.createElement("audio")
+						sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
+						sound_winner.setAttribute("autoplay", "autoplay")
+						sound_winner.setAttribute("preload", "auto")
+						document.body.appendChild(sound_winner)
+						sound_winner.volume = 0.7
+
 						if(puntuacion > parseInt(record.innerHTML))
 						{
 							record.innerHTML = puntuacion + ' pts'
