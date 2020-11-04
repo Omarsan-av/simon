@@ -92,7 +92,7 @@
 					function soundStart()
 					{
 						let sound_start = document.createElement("audio")
-						sound_start.setAttribute("src", "https://omarsav.com/audio/next.mp3")
+						sound_start.setAttribute("src", "https://omarsav.com/audio/start_game.mp3")
 						sound_start.setAttribute("autoplay", "autoplay")
 						document.body.appendChild(sound_start)
 						sound_start.volume = 0.3
@@ -115,7 +115,7 @@
 
 					else 
 					{
-						// soundStart()
+						soundStart()
 						btnEmpezar.classList.add('hide')
 					}
 				}
@@ -216,8 +216,14 @@
 
 						if(color === 'azul')
 						{
-							// sound_color.setAttribute("src", "https://omarsav.com/audio/blue.mp3")
+							sound_color.setAttribute("src", "https://omarsav.com/audio/blue.mp3")
 						}
+
+						if(color === 'violeta')
+						{
+							sound_color.setAttribute("src", "https://omarsav.com/audio/violet.mp3")
+						}
+
 						sound_color.setAttribute("autoplay", "autoplay")
 						document.body.appendChild(sound_color)
 						sound_color.volume = 0.4
@@ -325,6 +331,12 @@
 
 				ganoElJuego()
 				{
+					let sound_winner = document.createElement("audio")
+					sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
+					sound_winner.setAttribute("autoplay", "autoplay")
+					document.body.appendChild(sound_winner)
+					sound_winner.volume = 0.5
+
 					setTimeout(() => 
 					{
 						if(puntuacion > parseInt(record.innerHTML))
