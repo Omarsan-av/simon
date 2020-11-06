@@ -68,7 +68,6 @@
 					this.inicializar = this.inicializar.bind(this)
 					this.inicializar()
 					this.generarSecuencia()
-
 					setTimeout(this.siguienteNivel, 2000)
 				}
 
@@ -95,10 +94,7 @@
 					{
 						let sound_start = document.createElement("audio")
 						sound_start.setAttribute("src", "https://omarsav.com/audio/start_game.mp3")
-						sound_start.setAttribute("autoplay", "autoplay")
-						sound_start.setAttribute("preload", "auto")
-						document.body.appendChild(sound_start)
-						sound_start.volume = 0.3
+						setAttributes(sound_start)
 					}
 
 					if(animation.classList.contains('animate__rotateIn'))
@@ -194,7 +190,6 @@
 							const color = this.transformarNumeroAColor(this.secuencia[i])
 
 							setTimeout(() => this.iluminarColor(color), 800 * i)
-							// console.log(color)
 						}
 					}, 800)
 				}
@@ -227,10 +222,8 @@
 							sound_color.setAttribute("src", "https://omarsav.com/audio/violet.mp3")
 						}
 
-						sound_color.setAttribute("autoplay", "autoplay")
-						sound_color.setAttribute("preload", "auto")
-						document.body.appendChild(sound_color)
 						sound_color.volume = 0.4
+						setAttributes(sound_color)
 					}
 
 					soundColor()
@@ -273,7 +266,6 @@
 
 						let score = document.getElementById('score')
 						score.innerHTML =  puntuacion + ' pts'
-						// console.log(puntuacion)
 
 						if(this.subnivel === this.nivel)
 						{
@@ -334,10 +326,8 @@
 					{
 						let sound_winner = document.createElement("audio")
 						sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
-						sound_winner.setAttribute("autoplay", "autoplay")
-						sound_winner.setAttribute("preload", "auto")
-						document.body.appendChild(sound_winner)
 						sound_winner.volume = 0.7
+						setAttributes(sound_winner)
 
 						if(puntuacion > parseInt(record.innerHTML))
 						{
@@ -374,11 +364,9 @@
 				{
 					setTimeout(()=>
 					{
-						let audio_loser= document.createElement("audio")
-						audio_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
-						audio_loser.setAttribute("autoplay", "autoplay")
-						document.body.appendChild(audio_loser)
-						audio_loser.volume = 0.3
+						let sound_loser= document.createElement("audio")
+						sound_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
+						setAttributes(sound_loser)
 
 						Swal.fire
 						({
@@ -419,6 +407,14 @@
 			function empezarJuego()
 			{
 				window.juego = new Juego()
+			}
+
+			function setAttributes(element) 
+			{
+				element.setAttribute("autoplay", "autoplay")
+				element.setAttribute("preload", "auto")
+				document.body.appendChild(element)
+				element.volume = 0.3
 			}
 		 </script>
   	</body>
