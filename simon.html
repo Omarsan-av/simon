@@ -55,11 +55,12 @@
 			const naranja = document.getElementById('naranja')
 			const btnEmpezar = document.getElementById('btnEmpezar')
 			const animation = document.getElementById('animation')
+			const URL = 'https://omarsav.com/audio/'
 			let puntuacion = 0
 			var cont = 0
 			var ULTIMO_NIVEL = 30
 			let record = document.getElementById('record')
-			record.innerHTML = 0
+			record.innerHTML = '0 pts'
 
       	class Juego
 			{
@@ -93,8 +94,7 @@
 					function soundStart()
 					{
 						let sound_start = document.createElement("audio")
-						sound_start.setAttribute("src", "https://omarsav.com/audio/start_game.mp3")
-						setAttributes(sound_start)
+						setAttributes(sound_start, 'start_game.mp3')
 					}
 
 					if(animation.classList.contains('animate__rotateIn'))
@@ -203,27 +203,24 @@
 						let sound_color = document.createElement("audio")
 
 						if(color === 'naranja')
-						{
-							sound_color.setAttribute("src", "https://omarsav.com/audio/orange.mp3")
+						{	
+							setAttributes(sound_color, 'orange.mp3')
 						}
 
 						if(color === 'verde')
 						{
-							sound_color.setAttribute("src", "https://omarsav.com/audio/green.mp3")
+							setAttributes(sound_color, 'green.mp3')
 						}
 
 						if(color === 'azul')
 						{
-							sound_color.setAttribute("src", "https://omarsav.com/audio/blue.mp3")
+							setAttributes(sound_color, 'blue.mp3')
 						}
 
 						if(color === 'violeta')
 						{
-							sound_color.setAttribute("src", "https://omarsav.com/audio/violet.mp3")
+							setAttributes(sound_color, 'violet.mp3')
 						}
-
-						setAttributes(sound_color)
-						// sound_color.volume = 0.4
 					}
 
 					soundColor()
@@ -325,8 +322,8 @@
 					setTimeout(() =>
 					{
 						let sound_winner = document.createElement("audio")
-						sound_winner.setAttribute("src", "https://omarsav.com/audio/congratulations.mp3")
-						setAttributes(sound_winner)
+						setAttributes(sound_winner, 'congratulations.mp3')
+						
 						sound_winner.volume = 0.7
 
 						if(puntuacion > parseInt(record.innerHTML))
@@ -365,8 +362,7 @@
 					setTimeout(()=>
 					{
 						let sound_loser= document.createElement("audio")
-						sound_loser.setAttribute("src", "https://omarsav.com/audio/you_lose.mp3")
-						setAttributes(sound_loser)
+						setAttributes(sound_loser, 'you_lose.mp3')
 
 						Swal.fire
 						({
@@ -409,8 +405,9 @@
 				window.juego = new Juego()
 			}
 
-			function setAttributes(element) 
+			function setAttributes(element, audio) 
 			{
+				element.setAttribute("src", `${URL}${audio}`)
 				element.setAttribute("autoplay", "autoplay")
 				element.setAttribute("preload", "auto")
 				document.body.appendChild(element)
