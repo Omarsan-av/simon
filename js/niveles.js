@@ -1,7 +1,7 @@
-const FACIL = document.getElementById('facil')
-const MEDIO = document.getElementById('medio')
-const SUPREMO = document.getElementById('supremo')
-let n
+const FACIL = document.getElementById('facil');
+const MEDIO = document.getElementById('medio');
+const SUPREMO = document.getElementById('supremo');
+let n;
 
 function soundLevel()
 {
